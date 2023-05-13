@@ -1,0 +1,262 @@
+benchmark: false
+bn:
+  eps: 1.0e-05
+  mom: 0.1
+cfg_dest: config.yaml
+dataset:
+  cache_load: false
+  cache_save: false
+  dir: datasets
+  edge_dim: 128
+  edge_encoder: false
+  edge_encoder_bn: true
+  edge_encoder_name: Bond
+  edge_encoder_num_types: 0
+  edge_message_ratio: 0.8
+  edge_negative_sampling_ratio: 1.0
+  edge_train_mode: all
+  encoder: true
+  encoder_bn: true
+  encoder_dim: 128
+  encoder_name: db
+  format: OGB
+  label_column: none
+  label_table: none
+  location: local
+  name: peptides-functional
+  node_encoder: true
+  node_encoder_bn: false
+  node_encoder_name: Atom
+  node_encoder_num_types: 0
+  regression_targets: []
+  remove_feature: false
+  resample_disjoint: false
+  resample_negative: false
+  shuffle_split: true
+  slic_compactness: 10
+  split:
+  - 0.8
+  - 0.1
+  - 0.1
+  split_dir: ./splits
+  split_index: 0
+  split_mode: standard
+  task: graph
+  task_type: classification_multilabel
+  to_undirected: false
+  transductive: false
+  transform: none
+  tu_simple: true
+device: cuda
+edge_dim: 0
+edge_types: []
+example_arg: example
+example_group:
+  example_arg: example
+gnn:
+  act: relu
+  agg: mean
+  att_final_linear: false
+  att_final_linear_bn: false
+  att_heads: 1
+  batchnorm: true
+  clear_feature: true
+  dim_inner: 64
+  dropout: 0.0
+  head: graph
+  keep_edge: 0.5
+  l2norm: true
+  layer_type: gcnconv
+  layers_mp: 13
+  layers_post_mp: 1
+  layers_pre_mp: 0
+  msg_direction: single
+  normalize_adj: false
+  residual: false
+  self_msg: concat
+  skip_every: 1
+  stage_type: stack_residual
+gpu_mem: false
+gt:
+  attn_dropout: 0.0
+  batch_norm: true
+  bigbird:
+    add_cross_attention: false
+    attention_type: block_sparse
+    block_size: 3
+    chunk_size_feed_forward: 0
+    hidden_act: relu
+    is_decoder: false
+    layer_norm_eps: 1.0e-06
+    max_position_embeddings: 128
+    num_random_blocks: 3
+    use_bias: false
+  dim_hidden: 64
+  dropout: 0.0
+  full_graph: true
+  gamma: 1.0e-05
+  layer_norm: false
+  layer_type: SANLayer
+  layers: 3
+  n_heads: 8
+  pna_degrees: []
+  residual: true
+max_graph_diameter: 1000
+mem:
+  inplace: false
+metric_agg: argmax
+metric_best: ap
+model:
+  edge_decoding: dot
+  graph_pooling: mean
+  loss_fun: cross_entropy
+  match_upper: true
+  size_average: mean
+  thresh: 0.5
+  type: gnn
+name_tag: ''
+num_threads: 6
+num_workers: 0
+optim:
+  base_lr: 0.001
+  batch_accumulation: 1
+  clip_grad_norm: false
+  lr_decay: 0.1
+  max_epoch: 300
+  min_lr: 1.0e-05
+  momentum: 0.9
+  num_warmup_epochs: 50
+  optimizer: adamW
+  reduce_factor: 0.5
+  schedule_patience: 20
+  scheduler: reduce_on_plateau
+  steps:
+  - 30
+  - 60
+  - 90
+  weight_decay: 0.0
+out_dir: results
+posenc_ElstaticSE:
+  dim_pe: 16
+  enable: false
+  kernel:
+    times: []
+    times_func: range(10)
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: false
+  post_layers: 0
+  raw_norm_type: none
+posenc_EquivStableLapPE:
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: false
+  raw_norm_type: none
+posenc_HKdiagSE:
+  dim_pe: 16
+  enable: false
+  kernel:
+    times: []
+    times_func: ''
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: false
+  post_layers: 0
+  raw_norm_type: none
+posenc_LapPE:
+  dim_pe: 16
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: false
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: false
+  post_layers: 0
+  raw_norm_type: none
+posenc_RWSE:
+  dim_pe: 16
+  enable: false
+  kernel:
+    times: []
+    times_func: ''
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: false
+  post_layers: 0
+  raw_norm_type: none
+posenc_SignNet:
+  dim_pe: 16
+  eigen:
+    eigvec_norm: L2
+    laplacian_norm: sym
+    max_freqs: 10
+  enable: false
+  layers: 3
+  model: none
+  n_heads: 4
+  pass_as_var: false
+  phi_hidden_dim: 64
+  phi_out_dim: 4
+  post_layers: 0
+  raw_norm_type: none
+print: both
+nu: 1
+round: 5
+run_dir: results
+run_multiple_splits: []
+seed: 0
+share:
+  dim_in: 1
+  dim_out: 1
+  num_splits: 1
+snowflake:
+  account: EPA65780
+  database: Vrtex
+  password: Test12345
+  user: yjxxx
+  warehouse: SF_TUTS_WH
+spn:
+  K: 0
+tensorboard_agg: true
+tensorboard_each_run: false
+train:
+  auto_resume: false
+  batch_size: 128
+  ckpt_clean: true
+  ckpt_period: 100
+  epoch_resume: -1
+  eval_period: 1
+  finetune: ''
+  freeze_pretrained: false
+  iter_per_epoch: 32
+  mode: custom
+  neighbor_sizes:
+  - 20
+  - 15
+  - 10
+  - 5
+  node_per_graph: 32
+  radius: extend
+  sample_node: false
+  sampler: full_batch
+  walk_length: 4
+use_edge_labels: false
+val:
+  node_per_graph: 32
+  radius: extend
+  sample_node: false
+  sampler: full_batch
+view_emb: false
+wandb:
+  entity: gtransformers
+  name: ''
+  project: peptides-func
+  use: false
