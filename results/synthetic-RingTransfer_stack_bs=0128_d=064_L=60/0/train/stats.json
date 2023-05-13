@@ -1,2 +1,0 @@
-{"epoch": 0, "time_epoch": 16.32242, "eta": 16.32242, "eta_hours": 0.00453, "loss": 1.62599806, "lr": 0.001, "params": 254213, "time_iter": 0.34729, "accuracy": 0.22683, "f1": 0.21501, "auc": 0.50505}
-{"epoch": 1, "time_epoch": 14.67221, "eta": 0.0, "eta_hours": 0.0, "loss": 1.62513555, "lr": 0.001, "params": 254213, "time_iter": 0.31217, "accuracy": 0.24567, "f1": 0.23167, "auc": 0.51817}
