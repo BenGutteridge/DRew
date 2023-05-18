@@ -46,15 +46,18 @@ def init_shareDRewGCN(model, dim_in, dim_out, num_layers, skip_first_hop=False):
 
 
 def init_SP_GCN(model, dim_in, dim_out, num_layers, max_k=None):
-  """For the non-dynamic k-hop model: sp_gnn. """
+  """SP-GCN (with weight sharing) """
   assert num_layers == cfg.gnn.layers_mp
   model.num_layers = num_layers
   model.max_k = cfg.gnn.layers_mp if max_k is None else max_k
   if cfg.max_graph_diameter <= model.max_k:
     print("Warning: max_graph_diameter = %d; <= max_k, so setting max_k to max_graph_diameter" % cfg.max_graph_diameter)
     model.max_k = cfg.max_graph_diameter
-  W = []
+  W, alpha_t = [], []
   for t in range(num_layers):
-    W.append(nn.ModuleList([GNNLayer(dim_in, dim_out) for _ in range(model.max_k)])) # W_{k,t}
+    W.append(GNNLayer(dim_in, dim_out)) # W_{k,t}
+    alpha_t.append(torch.nn.Parameter(torch.randn(model.max_k), 
+                                        requires_grad=True)) # random init from normal dist
   model.W = nn.ModuleList(W)
+  model.alpha = nn.ParameterList(alpha_t)
   return model
