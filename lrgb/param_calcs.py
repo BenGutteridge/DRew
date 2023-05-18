@@ -11,8 +11,13 @@ def set_d_fixed_params(cfg):
   if N > 0:
     cfg.gnn.dim_inner = return_hidden_dim(N)
     print('Hidden dim manually set to %d for fixed param count of %dk' % (cfg.gnn.dim_inner, int(N/1000)))
+  elif cfg.dataset.name == 'RingTransfer':
+    if cfg.gnn.stage_type == 'drew_gnn': # (L^2+L)/2 scaling for DRew
+        n_layers, d = cfg.gnn.layers_mp, cfg.gnn.dim_inner
+        cfg.gnn.dim_inner = round((2 * (d ** 2) / (n_layers+1)) ** 0.5) # sets param count to roughly the same for fixed L
+    print('Using d = %d' % cfg.gnn.dim_inner)
   else:
-      print('Using given hidden dim of %d' % cfg.gnn.dim_inner)
+    print('Using given hidden dim of %d' % cfg.gnn.dim_inner)
 
 def get_k_neighbourhoods(t):
   sp_nbhs = list(range(1, min(t+1, cfg.k_max)+1))

@@ -80,9 +80,6 @@ class RingTransferDataset(InMemoryDataset):
         self.kwargs = kwargs
         if cfg.gnn.layers_mp == 1: # the default - otherwise use specified no.
             cfg.gnn.layers_mp = num_nodes//2
-        if cfg.gnn.stage_type == 'drew_gnn':
-            n_layers, d = cfg.gnn.layers_mp, cfg.gnn.dim_inner
-            cfg.gnn.dim_inner = round((2 * (d ** 2) / (n_layers+1)) ** 0.5) # should set param count to roughly the same for fixed L
         split = (self.num_graphs * torch.tensor(cfg.dataset.split)).long()
         data_list, split = self.load_ring_transfer_dataset(self.num_nodes, 
                                                            split=split,

@@ -2,7 +2,7 @@
 
 ![alt text](misc/drew_figure.png)
 
-This repository contains the code required to reproduce the experimental results for the architectures described in the "DRew: Dynamically Rewired Message Passing with Delay" paper, accepted at ICML 2023.
+This repository contains the code required to reproduce the experimental results for the architectures described in the "[DRew: Dynamically Rewired Message Passing with Delay](https://arxiv.org/abs/2305.08018)" paper, accepted at ICML 2023.
 
 The LRGB portion of the code is adapted from [here](https://github.com/vijaydwivedi75/lrgb) and the QM9 portion of the code is adapted from [here](https://github.com/radoslav11/SP-MPNN).
 
@@ -24,6 +24,7 @@ pip install tensorboardX
 conda install -c dglteam dgl
 conda install setuptools==58.0.4
 pip install numba
+pip install tabulate
 ```
 
 ## Reproducing LRGB experiments
@@ -59,7 +60,15 @@ A detailed list of all additional arguments can be seen using `python main.py -h
 
 
 ## Reproducing RingTransfer experiments
-TBD
+From inside `lrgb/configs/paper_configs/RINGTRANSFER` use:
+
+```
+bash run_ringtransfer_exps.sh
+```
+
+Generally experiments can be run in the same way as for the LRGB datasets, using `dataset.format synthetic` and `dataset.name RingTransfer` arguments.
+
+Dataset generation code is adapted from [here](https://github.com/twitter-research/cwn/tree/main).
 
 
 ##  Citing this paper
@@ -67,5 +76,12 @@ If you make use of this code, or its accompanying paper,
 please cite this work as follows:
 
 ```
-TBD
+@misc{gutteridge2023drew,
+      title={{DRew}: Dynamically Rewired Message Passing with Delay}, 
+      author={Benjamin Gutteridge and Xiaowen Dong and Michael Bronstein and Francesco Di Giovanni},
+      year={2023},
+      eprint={2305.08018},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
 ```
