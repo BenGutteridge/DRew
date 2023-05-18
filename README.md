@@ -77,7 +77,7 @@ please cite this work as follows:
 
 ```
 @misc{gutteridge2023drew,
-      title={{DRew}: Dynamically Rewired Message Passing with Delay}, 
+      title={{DRew}: {D}ynamically {R}ewired {M}essage {P}assing with {D}elay}, 
       author={Benjamin Gutteridge and Xiaowen Dong and Michael Bronstein and Francesco Di Giovanni},
       year={2023},
       eprint={2305.08018},
