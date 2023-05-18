@@ -2,7 +2,7 @@
 
 ![alt text](misc/drew_figure.png)
 
-This repository contains the code required to reproduce the experimental results for the architectures described in the "DRew: Dynamically Rewired Message Passing with Delay" paper, accepted at ICML 2023.
+This repository contains the code required to reproduce the experimental results for the architectures described in the "[DRew: Dynamically Rewired Message Passing with Delay](https://arxiv.org/abs/2305.08018)" paper, accepted at ICML 2023.
 
 The LRGB portion of the code is adapted from [here](https://github.com/vijaydwivedi75/lrgb) and the QM9 portion of the code is adapted from [here](https://github.com/radoslav11/SP-MPNN).
 
