@@ -130,7 +130,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-data/
+data/QM9/QM9_proc/
 runs/
 results_exp/
 results_paper/
