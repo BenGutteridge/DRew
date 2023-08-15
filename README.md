@@ -76,12 +76,12 @@ If you make use of this code, or its accompanying paper,
 please cite this work as follows:
 
 ```
-@misc{gutteridge2023drew,
-      title={{DRew}: {D}ynamically {R}ewired {M}essage {P}assing with {D}elay}, 
-      author={Benjamin Gutteridge and Xiaowen Dong and Michael Bronstein and Francesco Di Giovanni},
-      year={2023},
-      eprint={2305.08018},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@inproceedings{gutteridge2023drew,
+  title={{DRew}: Dynamically Rewired Message Passing with Delay},
+  author={Gutteridge, Benjamin and Dong, Xiaowen and Bronstein, Michael M and Di Giovanni, Francesco},
+  booktitle={International Conference on Machine Learning},
+  pages={12252--12267},
+  year={2023},
+  organization={PMLR}
 }
 ```
